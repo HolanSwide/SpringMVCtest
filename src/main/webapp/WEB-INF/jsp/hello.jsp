@@ -12,5 +12,7 @@
 </head>
 <body>
 ${msg}
+<hr>
+${user}
 </body>
 </html>

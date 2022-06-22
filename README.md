@@ -54,6 +54,20 @@ SpringMVC
 >
 >   方法返回的结果是视图的名称hello，加上配置文件中的前后缀变成WEB-INF/jsp/hello.jsp。
 
+# Spring注解
+
+## `@Component`
+即 组件，可以理解为以下三个注解的“父类”，实现Spring最基本的注册
+
+## `@Service`
+服务层标记注解
+
+## `@Controller`
+控制器层标记注解
+
+## `@Repository`
+Dao层标记注解 (Data Access Object 数据库访问对象)
+
 # 问题日志
 
 ## Spring相关
