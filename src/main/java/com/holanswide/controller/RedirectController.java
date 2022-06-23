@@ -24,7 +24,7 @@ public class RedirectController {
     @RequestMapping("/2")
     public String func2(@RequestParam("msg") String msg, Model model) {
         System.out.println(msg);
-        model.addAttribute("msg","Its MSG from Func1...");
+        model.addAttribute("msg","Its MSG from Func2...");
         model.addAttribute("user",new ClassPathXmlApplicationContext("spring-config.xml").getBean("user", User.class));
         return "hello";
     }

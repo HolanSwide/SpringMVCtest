@@ -68,6 +68,67 @@ SpringMVC
 ## `@Repository`
 Dao层标记注解 (Data Access Object 数据库访问对象)
 
+# MVC注解
+
+## `@RequestMapping`
+标记控制器访问路径，可同时标记在控制器类和控制器类的方法上
+
+> **Restful风格** 
+> 
+> Restful就是一个资源定位及资源操作的风格。不是标准也不是协议，只是一种风格。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。
+>
+>  - 资源：互联网所有的事物都可以被抽象为资源
+> 
+>  - 资源操作：使用POST、DELETE、PUT、GET
+>
+> 使用不同方法对资源进行操作。分别对应 添加、 删除、修改、查询。
+>
+> 可以通过指定 `@RequestMapping` 注解中的 `method` 属性值来规定哪些需求可以访问到控制器
+> （如果不指定，任何请求类型都可以访问到。）
+  
+**Restful风格下的注解**
+
+```text
+@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+```
+
+# SpringMVC操作
+
+## 1. 获取前端传值
+
+### 1.1 路径传值
+
+```java
+@GetMapping("/1/{param}")
+// 路径参数 {param}，在方法参数前添加注解 @PathVariable 可以接收
+// 参考url： /1/101 此时参数 param 的值为 101
+public String func1(Model model, @PathVariable int param) 
+```
+
+### 1.2 直接传值（Get、Post）
+
+```java
+@GetMapping("/2")
+// 通过 get 传值，在方法参数前添加注解 @RequestParam 可以接收
+// 参考url： /2?msg=hello+world 此时参数 msg 的值为 hello world
+// 也可以接收一个对象 但注意属性名要对应
+public String func2(Model model, @RequestParam("msg") String msg) 
+```
+
+## 2. 向前端传值
+使用 Model 传值：
+```java
+// 可传对象
+public String func2(Model model, @RequestParam("msg") String msg) {
+        System.out.println(msg);
+        model.addAttribute("msg",msg);
+        return "hello";
+}
+```
+
 # 问题日志
 
 ## Spring相关
